@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CustomerWeb_App.ViewModels
 {
-    public class GetAllCustomersViewModel
+    public class GetAllCustomersViewModel 
     {
         public string Name { get; set; }
 

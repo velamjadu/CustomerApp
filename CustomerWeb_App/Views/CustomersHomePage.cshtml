@@ -1,5 +1,4 @@
-﻿@model CustomerWeb_App.ViewModels.GetAllCustomers
-
+﻿@model List<CustomerWeb_App.ViewModels.GetAllCustomersViewModel>
 @{
     ViewBag.Title = "All Customers";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -51,7 +50,7 @@
             </div>
         }
 
-        @if (Model.Customer.Any())
+        @if (!Model.Any())
         {
             <div class="card mb-4">
                 <div class="card-header">
@@ -78,30 +77,29 @@
                         </thead>
 
                         <tbody>
-                            @foreach (var item in Model.CustomerDetails)
+
+                            @foreach (var item in Model)
                             {
                                 <tr>
                                     <td scope="col">
-                                            <a>@Html.DisplayFor(modelItem => item.Name) @Html.DisplayFor(modelItem => item.Surname) </a>
+                                          @Html.DisplayFor(modelItem => item.Name) 
+                                    </td>
+                                    <td class="d-none d-sm-table-cell">
+                                          @Html.DisplayFor(modelItem => item.Surname)
                                     </td>
                                     <td class="d-none d-sm-table-cell">
                                           @Html.DisplayFor(modelItem => item.Cell_Number)
                                     </td>
                                     <td class="d-none d-sm-table-cell">
-                                            @Html.DisplayFor(modelItem => item.Physical_Address)
+                                          @Html.DisplayFor(modelItem => item.Physical_Address)
                                     </td>
-                                        <td class="d-none d-sm-table-cell">
-                                            @Html.DisplayFor(modelItem => item.Postal_Address)
-                                        </td>
-                                        <td class="d-none d-sm-table-cell">
-                                            @Html.DisplayFor(modelItem => item.Comments)
-                                        </td>
                                     <td class="d-none d-sm-table-cell">
-                                        <span> | </span>
-                                        <a href="@Url.ActionEnc("Edit", new {sid = item.id })">
-                                            <i style="color:#20a8d8" data-toggle="tooltip" data-placement="top" title="Update Staff" class="moreDetails fa fa-pencil-alt"></i>
-                                        </a>
+                                          @Html.DisplayFor(modelItem => item.Postal_Address)
                                     </td>
+                                    <td class="d-none d-sm-table-cell">
+                                          @Html.DisplayFor(modelItem => item.Comment)
+                                    </td>
+                                    
                                 </tr>
                             }  
                         </tbody>
