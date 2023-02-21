@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Add Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CustomerWeb_App.ViewModels.SubmitCustomerViewModel
+
+@section Stylesheets
+    {
+    <link href="~/Content/rad-toggle.css" rel="stylesheet" />
+    <link href="~/Asset/css/custom-radio-button.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
+}
+    <main class="main">
+        @section BreadCrumbs {
+        <ol class="breadcrumb my-0 ms-2">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Customer", "details")">Home</a>
+            </li>
+            <li class="breadcrumb-item">Add Customer</li>
+            <li class="breadcrumb-item">Details</li>
+        </ol>
+    }
+    
+        <div class="container-fluid">
+        @using (Html.BeginForm("AddNewCustomer", "", FormMethod.Post, new { id = "submitCustomerForm" }))
+        {
+            <div class="card card-accent-info">
+                <div class="card-header">
+                    <i class="fa fa-info-circle"></i>
+                    <strong>Add New Customer </strong>
+
+                    <div class="card-body">
+                        <form id="formValidation" action="@Url.Action("Create","Customer")" method="post">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group mb-3">
+                                @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "font-weight-bold" })
+                                @Html.TextAreaFor(model => model.Comment, new { @class = "form-control ", title = "Comment", @rows = 5 })
+                                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="card-footer">
+                                <button id="btnSubmitMail" type="button" class="btn btn-primary">Submit <i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </main>
+
+    @section scripts{
+    <script src="~/Asset/js/toggle-switch-bootstrap4.js"></script>
+    <script src="https://unpkg.com/axios@0.19.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vue-select@2.6.4/dist/vue-select.js"></script>
+
+    <script type="text/javascript" nonce="9815422428">
+        $(document).ready(function () {
+        
+
+                $('#btnSubmitMail').click(function (e) {
+                var Name$('#Nameval();
+                var Surname = $('#Surname').val();
+                var Cell_Number = $('#Cell_Number').val();
+                var Physical_Address = $('#Physical_Address').val();
+                var Postal_Address = $('#Postal_Address').val();
+                var Comment = $('#Comment').val();
+                console.log(Customer);
+                if(submitCustomerForm = ""){
+                    if (Name = "") {
+                    console.log("Name");
+                    $("errorName").show();
+                    e.preventDefault();
+                    }
+                    if (Surname = "") {
+                        console.log("Surname");
+                        $("errorSurname").show();
+                        e.preventDefault();
+                    }
+                    if (Physical_Address = "") {
+                        console.log("Physical_Address");
+                        $("errorPhysical_Address").show();
+                        e.preventDefault();
+                    }
+                    if (Postal_Address = "") {
+                        console.log("Postal_Address");
+                        $("errorPostal_Address").show();
+                        e.preventDefault();
+                    }
+                    if (Comments = "") {
+                        console.log("Comments");
+                        $("errorComments").show();
+                        e.preventDefault();
+                    }
+                }
+                else {
+                    console.log("processing...");
+                    $("#submitCustomerForm").submit();
+                    setTimeout(function () {
+                        $('#btnSubmitMail').prop("disabled", true);
+                        $('#btnSubmitMail').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+                    }, 2000);
+                }
+    </script>
+    <script type="text/javascript" nonce="9815422428">
+        Vue.component('v-select', VueSelect.VueSelect);
+        function GetName() {
+        let Name =[];
+
+            axios.get('/Customers/GetAllCustomers'){ 
+            .then(function (response) {
+                for (let i = 0; i < response.data.length; i++) {
+                    Customers.push({ 
+                        id: response.data[i].id,
+                        label: response.data[i].Name + ' ' + response.data[i].Surname ' ' + response.data[i].Cell_Phone ' ' + response.data[i].Physical_Address ' ' + response.data[i].Postal_Address ' ' + response.data[i].Comment
+                      });
+                }
+            });
+        return (Customers);
+    }
+    </script>
+ }

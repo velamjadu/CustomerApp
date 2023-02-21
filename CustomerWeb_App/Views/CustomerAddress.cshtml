@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Add Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CustomerWeb_App.ViewModels.SubmitCustomerViewModel
+
+@section Stylesheets
+    {
+    <link href="~/Content/rad-toggle.css" rel="stylesheet" />
+    <link href="~/Asset/css/custom-radio-button.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
+}
+    <main class="main">
+        @section BreadCrumbs {
+        <ol class="breadcrumb my-0 ms-2">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Customer", "details")">Home</a>
+            </li>
+            <li class="breadcrumb-item">Add Customer</li>
+            <li class="breadcrumb-item">Details</li>
+        </ol>
+    }
+
+        <div class="container-fluid">
+            {
+            <div class="card card-accent-info">
+                <div class="card-header">
+                    <i class="fa fa-info-circle"></i>
+                    <strong>Add New Customer Address </strong>
+                    
+                    <div class="card-body">
+                        <form id="formValidation" action="@Url.Action("Create","Customer")" method="post">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group mb-3">
+                                @Html.LabelFor(model => model.Physical_Address, htmlAttributes: new { @class = "font-weight-bold" })
+                                @Html.TextBoxFor(model => model.Physical_Address, new { @class = "form-control " })
+                                @Html.ValidationMessageFor(model => model.Physical_Address, "", new { @class = "text-danger" })
+                            </div>
+                            Surname
+                            <div class="form-group mb-3">
+                                @Html.LabelFor(model => model.Postal_Address, htmlAttributes: new { @class = "font-weight-bold" })
+                                @Html.TextBoxFor(model => model.Postal_Address, new { @class = "form-control " })
+                                @Html.ValidationMessageFor(model => model.Postal_Address, "", new { @class = "text-danger" })
+                            </div>
+                             
+                            <div>
+                                <button id="nextButton" type="next" class="btn btn-primary">Next </button>
+                                <button id="Backbutton" type="back" class="btn btn-primary">Back </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </main>
+
+    @section scripts{
+    <script src="~/Asset/js/toggle-switch-bootstrap4.js"></script>
+    <script src="https://unpkg.com/axios@0.19.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vue-select@2.6.4/dist/vue-select.js"></script>
+    <script type="text/javascript" nonce="9815422428">
+
+
+
+
+    </script>
+ }
