@@ -20,17 +20,12 @@ namespace CustomerWeb_App.Business
             return ObjectMapper.Mapper.Map<SubmitCustomerViewModel>(result);
         }
         
-        public List<GetAllCustomersViewModel> GetAllCustomers(GetAllCustomersViewModel model)
+        public List<GetAllCustomersViewModel> GetAllCustomers()
         {
             using var repo = new CustomersRepository();
-            var dbModel = ObjectMapper.Mapper.Map<Customer>(model);
             var result = repo.GetAllCustomers();
             return ObjectMapper.Mapper.Map<List<GetAllCustomersViewModel>>(result);
         }
 
-        public object GetAllCustomers()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

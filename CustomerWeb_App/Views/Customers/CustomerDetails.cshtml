@@ -5,12 +5,7 @@
 
 @model CustomerWeb_App.ViewModels.SubmitCustomerViewModel
 
-@section Stylesheets
-    {
-    <link href="~/Content/rad-toggle.css" rel="stylesheet" />
-    <link href="~/Asset/css/custom-radio-button.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
-}
+
 <main class="main">
 @section BreadCrumbs {
     <ol class="breadcrumb my-0 ms-2">
@@ -23,7 +18,7 @@
     }
 
     <div class="container-fluid">
-        {
+        
             <div class="card card-accent-info">
                 <div class="card-header">
                     <i class="fa fa-info-circle"></i>
@@ -37,7 +32,7 @@
                             @Html.TextBoxFor(model => model.Name, new { @class = "form-control " })
                             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                         </div>
-                        Surname
+                        
                         <div class="form-group mb-3">
                             @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "font-weight-bold" })
                             @Html.TextBoxFor(model => model.Surname, new { @class = "form-control " })
@@ -57,7 +52,7 @@
                     </div>
                 </div>
             </div>
-        }
+        
     </div>
  </main>
 
