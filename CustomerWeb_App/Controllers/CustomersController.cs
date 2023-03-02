@@ -13,6 +13,20 @@ namespace CustomerWeb_App.Controllers
             return View(model);
         }
 
+        public ActionResult CustomerComment()
+        {
+            var model = new SubmitCustomerViewModel();
+
+            return View(model);
+        }
+
+        public ActionResult CustomerAddress()
+        {
+            var model = new SubmitCustomerViewModel();
+
+            return View(model);
+        }
+
         public ActionResult CustomersHomePage() 
         {
             var model = new CustomerBusiness().GetAllCustomers();
