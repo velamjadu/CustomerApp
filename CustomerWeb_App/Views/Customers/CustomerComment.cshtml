@@ -12,7 +12,7 @@
                 <a href="@Url.Action("Customer", "details")">Home</a>
             </li>
             <li class="breadcrumb-item">Add Customer</li>
-            <li class="breadcrumb-item">Details</li>
+            <li class="breadcrumb-item">Comments</li>
         </ol>
     }
     
@@ -22,10 +22,10 @@
             <div class="card card-accent-info">
                 <div class="card-header">
                     <i class="fa fa-info-circle"></i>
-                    <strong>Add New Customer </strong>
+                    <strong>Additional Comments </strong>
 
                     <div class="card-body">
-                        <form id="formValidation" action="@Url.Action("Create","Customer")" method="post">
+                        <form id="formValidation" action="@Url.Action("CustomerComment","Customers")" method="post">
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group mb-3">
                                 @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "font-weight-bold" })
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="card-footer">
-                                <button id="btnSubmitMail" type="button" class="btn btn-primary">Submit <i class="fas fa-paper-plane"></i></button>
+                                <button id="btnSubmitCustomer" type="button" class="btn btn-primary">Submit <i class="fas fa-paper-plane"></i></button>
                             </div>
                         </form>
                     </div>
@@ -54,7 +54,7 @@
         $(document).ready(function () {
         
 
-                $('#btnSubmitMail').click(function (e) {
+                $('#btnSubmitCustomer').click(function (e) {
                 var Name$('#Nameval();
                 var Surname = $('#Surname').val();
                 var Cell_Number = $('#Cell_Number').val();
@@ -93,8 +93,8 @@
                     console.log("processing...");
                     $("#submitCustomerForm").submit();
                     setTimeout(function () {
-                        $('#btnSubmitMail').prop("disabled", true);
-                        $('#btnSubmitMail').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+                        $('#btnSubmitCustomer').prop("disabled", true);
+                        $('#btnSubmitCustomer').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
                     }, 2000);
                 }
     </script>

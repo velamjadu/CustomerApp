@@ -12,28 +12,34 @@
                 <a href="@Url.Action("Customer", "details")">Home</a>
             </li>
             <li class="breadcrumb-item">Add Customer</li>
-            <li class="breadcrumb-item">Details</li>
+            <li class="breadcrumb-item">Address</li>
         </ol>
     }
 
         <div class="container-fluid">
-            {
             <div class="card card-accent-info">
                 <div class="card-header">
                     <i class="fa fa-info-circle"></i>
                     <strong>Add New Customer Address </strong>
                     
                     <div class="card-body">
-                        <form id="formValidation" action="@Url.Action("Create","Customer")" method="post">
+                        <form id="formValidation" action="@Url.Action("CustomerComment","Customers")" method="post">
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group mb-3">
                                 @Html.LabelFor(model => model.Physical_Address, htmlAttributes: new { @class = "font-weight-bold" })
                                 @Html.TextBoxFor(model => model.Physical_Address, new { @class = "form-control " })
+                                <br />
+                                @Html.TextBoxFor(model => model.Physical_Address, new { @class = "form-control " })
+                                <br />
+                                @Html.TextBoxFor(model => model.Physical_Address, new { @class = "form-control " })
                                 @Html.ValidationMessageFor(model => model.Physical_Address, "", new { @class = "text-danger" })
                             </div>
-                            Surname
                             <div class="form-group mb-3">
                                 @Html.LabelFor(model => model.Postal_Address, htmlAttributes: new { @class = "font-weight-bold" })
+                                @Html.TextBoxFor(model => model.Postal_Address, new { @class = "form-control " })
+                                <br />
+                                @Html.TextBoxFor(model => model.Postal_Address, new { @class = "form-control " })
+                                <br />
                                 @Html.TextBoxFor(model => model.Postal_Address, new { @class = "form-control " })
                                 @Html.ValidationMessageFor(model => model.Postal_Address, "", new { @class = "text-danger" })
                             </div>
@@ -46,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            }
+            
         </div>
     </main>
 
